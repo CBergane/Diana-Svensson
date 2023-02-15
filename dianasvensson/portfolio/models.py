@@ -29,7 +29,5 @@ class Post(models.Model):
         super(Post, self).save(*args, **kwargs)
 
 
-
-
 class Like(models.Model):
     post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name='post_likes', to_field='slug')

@@ -1,0 +1,32 @@
+{% extends "portfolio/base.html" %}
+{% load static %}
+{% block content %}
+<div class="container py-5">
+  <div class="row">
+    <div class="col-md-8">
+      <div class="card">
+        <div class="card-header">
+          <h2 class="card-title">{{ post.title }}</h2>
+          <p class="card-text"><small class="text-muted">Created at: {{ post.created_at|date:"Y-m-d" }}</small></p>
+        </div>
+        <div class="card-body">
+          <p class="card-text">{{ post.content|safe }}</p>
+        </div>
+        <div class="card-footer">
+          <form method="POST" action="{% url 'display_posts' %}">
+            {% csrf_token %}
+            <button onclick="goBack()" class="btn btn-outline-secondary btn-sm"><i class="fa-solid fa-arrow-left"></i> Back</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+    function goBack() {
+      window.history.back();
+    }
+</script>
+
+{% endblock %}

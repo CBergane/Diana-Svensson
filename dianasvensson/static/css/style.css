@@ -27,3 +27,35 @@ body{
 .btn-custum:hover {
     background-color: #e299c9;
 }
+
+#section {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding: 40px;
+  }
+
+  .card-custom {
+    border-radius: 14px;
+    box-shadow: 12px 32px 32px -12px #e299c9;
+    padding: 20px;
+    min-width: 250px;
+    height: 500px;
+    margin-bottom: -100px;
+    margin-right: -50px;
+    z-index: 1;
+    transition: all 0.25s ease-in-out;
+  }
+
+#section .card-custom:not(hover) {
+    opacity: 0.4;
+}
+
+#section .card-custom:hover {
+    transform: translateY(-16px) rotate(3deg);
+    opacity: 1;
+}
+
+#section .card-custom:hover ~ .card-custom {
+    transform: translateX(130px);
+}
