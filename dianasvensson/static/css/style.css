@@ -1,0 +1,29 @@
+/* Utileties */
+
+.main-content {
+    margin-top: 70px;
+}
+
+/* Colors */
+body{
+    background-color: #d9d9d9;
+}
+
+.navbar {
+    background-color: #030303;
+}
+
+.nav-item:hover {
+    background-color: #eabedb;
+}
+
+.nav-link:hover {
+    color: #737373;
+}
+
+.btn-custum {
+    background-color: #eabedb;
+}
+.btn-custum:hover {
+    background-color: #e299c9;
+}
