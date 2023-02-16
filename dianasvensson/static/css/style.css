@@ -6,7 +6,7 @@
 
 /* Colors */
 body{
-    background-color: #d9d9d9;
+    background-color: #737373;
 }
 
 .navbar {
@@ -37,6 +37,7 @@ body{
 
   .card-custom {
     border-radius: 14px;
+    background-color: #d9d9d9;
     box-shadow: 12px 32px 32px -12px #e299c9;
     padding: 20px;
     min-width: 250px;
@@ -45,17 +46,154 @@ body{
     margin-right: -50px;
     z-index: 1;
     transition: all 0.25s ease-in-out;
+    filter: grayscale(100%);
+    -webkit-box-reflect: below 10px linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.1));
   }
 
-#section .card-custom:not(hover) {
-    opacity: 0.4;
-}
 
 #section .card-custom:hover {
     transform: translateY(-16px) rotate(3deg);
-    opacity: 1;
+    filter: grayscale(0%);
+    z-index: 2;
 }
 
 #section .card-custom:hover ~ .card-custom {
     transform: translateX(130px);
 }
+
+
+.timeline {
+    position: relative;
+    margin-top: 30px;
+}
+
+.timeline:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 2px;
+  background-color: #eabedb;
+  transform: translateX(-50%);
+}
+
+.timeline-item {
+  position: relative;
+  padding: 20px 30px;
+}
+
+.timeline-item:before {
+  content: '';
+  position: absolute;
+  top: 30px;
+  left: -8px;
+  width: 16px;
+  height: 16px;
+  background-color: #eabedb;
+  border-radius: 50%;
+  z-index: 1;
+}
+
+.timeline-item:after {
+  content: '';
+  position: absolute;
+  top: 40px;
+  left: -8px;
+  width: 16px;
+  height: 16px;
+  border: 2px solid #eabedb;
+  border-radius: 50%;
+  z-index: 1;
+}
+
+.timeline-item:last-child {
+  padding-bottom: 0;
+}
+
+.timeline-item:last-child:before {
+  content: none;
+}
+
+.timeline-item:last-child:after {
+  content: none;
+}
+
+.timeline-bullets {
+    position: absolute;
+    left: 20px;
+    top: 0;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    z-index: 1;
+}
+
+.timeline-bullet {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #ccc;
+  margin-bottom: 20px;
+}
+
+.timeline-line {
+  position: absolute;
+  left: 25px;
+  top: 0;
+  width: 2px;
+  height: 100%;
+  background-color: #ccc;
+  z-index: 0;
+}
+
+.timeline-cards {
+  margin-top: 20px;
+}
+
+.timeline-card {
+  margin-bottom: 20px;
+  opacity: 0;
+  transition: opacity 1s;
+}
+
+.visible {
+  opacity: 1;
+}
+
+/* fade in effect on the cards */
+.highlight {
+    display: inline-block;
+
+    background-image: linear-gradient(#eabedb, #eabedb);
+    background-repeat: no-repeat;
+
+    background-size: 10px 100%;
+    background-position: 0 0;
+    transition: background-size 0.5s, background-position 0.3s 0.5s;
+}
+
+.highlight:hover {
+    background-size: 100% 100%;
+    background-position: 100% 0%;
+    transition: background-position 0.3s, background-size 0.5s 0.3s;
+}
+
+.timeline-fade-in {
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+
+.timeline-fade-in.visible {
+  opacity: 1;
+}
+
+.timeline-fade-in:nth-child(odd) {
+  transition-delay: 0.5s;
+}
+
+.timeline-fade-in:nth-child(even) {
+  transition-delay: 1s;
+}
+
+  

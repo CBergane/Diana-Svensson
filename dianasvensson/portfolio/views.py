@@ -1,9 +1,10 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
 from django.core.paginator import Paginator
+from django.views.generic import TemplateView, CreateView
 from django.urls import reverse
-from .models import Post, Like
-from .forms import PostForm
+from .models import Post, Like, Education, Experience
+from .forms import PostForm, ExperienceForm, EducationForm
 
 def create_post(request):
     form = PostForm()
@@ -66,3 +67,37 @@ def unlike_post(request, post_id):
     post.likes -= 1
     post.save()
     return redirect('display_posts')
+
+
+class TimelineView(TemplateView):
+    template_name = 'portfolio/timeline.html'
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['education'] = Education.objects.order_by('-start_date')
+        context['experience'] = Experience.objects.order_by('-start_date')
+        return context
+    
+
+class ExperienceCreateView(CreateView):
+    model = Experience
+    form_class = ExperienceForm
+    template_name = 'portfolio/add_experience.html'
+
+    def form_valid(self, form):
+        experience = form.save(commit=False)
+        experience.user = self.request.user
+        experience.save()
+        return redirect('timeline')
+    
+
+class EducationCreateView(CreateView):
+    model = Education
+    form_class = EducationForm
+    template_name = 'portfolio/add_education.html'
+
+    def form_valid(self, form):
+        education = form.save(commit=False)
+        education.user = self.request.user
+        education.save()
+        return redirect('timeline')

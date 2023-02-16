@@ -31,3 +31,19 @@ class Post(models.Model):
 
 class Like(models.Model):
     post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name='post_likes', to_field='slug')
+
+
+class Education(models.Model):
+    institution = models.CharField(max_length=100)
+    degree = models.CharField(max_length=100)
+    major = models.CharField(max_length=100)
+    start_date = models.DateField()
+    end_date = models.DateField()
+
+
+class Experience(models.Model):
+    company = models.CharField(max_length=100)
+    position = models.CharField(max_length=100)
+    start_date = models.DateField()
+    end_date = models.DateField()
+    description = models.TextField()
