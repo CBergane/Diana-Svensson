@@ -61,27 +61,51 @@ body{
     transform: translateX(130px);
 }
 
+.card {
+    padding: 20px 20px;
+    position: relative;
+    border-radius: 10px;
+}
+
+.content {
+    position: relative;
+    margin-top: 30px;
+    width: 50%;
+    padding: 10px 50px;
+    left: 0;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.content.visible {
+    opacity: 1;
+}
 
 .timeline {
     position: relative;
     margin-top: 30px;
 }
 
-.timeline:before {
-  content: '';
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 50%;
-  width: 2px;
-  background-color: #eabedb;
-  transform: translateX(-50%);
+.timeline:after {
+    content: '';
+    position: absolute;
+    width: 6px;
+    height: 100%;
+    background: #eabedb;
+    top: 0;
+    left: 50%;
 }
 
-.timeline-item {
-  position: relative;
-  padding: 20px 30px;
+.point{
+    height: 0;
+    width: 0;
+    position: absolute;
+    top: 28px;
+    border: 10px solid #eabedb;
+    border-radius: 50%;
+    right: -13px;
 }
+
 
 .timeline-item:before {
   content: '';
@@ -107,55 +131,7 @@ body{
   z-index: 1;
 }
 
-.timeline-item:last-child {
-  padding-bottom: 0;
-}
 
-.timeline-item:last-child:before {
-  content: none;
-}
-
-.timeline-item:last-child:after {
-  content: none;
-}
-
-.timeline-bullets {
-    position: absolute;
-    left: 20px;
-    top: 0;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    z-index: 1;
-}
-
-.timeline-bullet {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background-color: #ccc;
-  margin-bottom: 20px;
-}
-
-.timeline-line {
-  position: absolute;
-  left: 25px;
-  top: 0;
-  width: 2px;
-  height: 100%;
-  background-color: #ccc;
-  z-index: 0;
-}
-
-.timeline-cards {
-  margin-top: 20px;
-}
-
-.timeline-card {
-  margin-bottom: 20px;
-  opacity: 0;
-  transition: opacity 1s;
-}
 
 .visible {
   opacity: 1;
@@ -196,4 +172,19 @@ body{
   transition-delay: 1s;
 }
 
-  
+
+@media only screen and (max-width: 768px) {
+    .card-smal {
+        width: 100%;
+        margin-right: 0;
+    }
+
+    .timeline::after {
+        left: 100%;
+    }
+    
+    .content {
+        width: 100%;
+        padding: 10px;
+    }
+}
