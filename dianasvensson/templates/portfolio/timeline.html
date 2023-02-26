@@ -8,7 +8,7 @@
         <div class="timeline-tracker"></div>
         <h3>Education</h3>
         {% for e in education %}
-        <div class="col-sm-6 col-lg-4 content education">
+        <div class="col-sm-6 col-lg-4 content education {% if forloop.counter|divisibleby:2 %}right{% else %}left{% endif %}">
           <div class="card card-smal mb-3">
             <div class="card-body">
               <h4 class="highlight card-title">{{ e.degree }}</h4>
@@ -16,13 +16,13 @@
               <p class="card-text">{{ e.start_date|date:"M Y" }} - {% if e.end_date %}{{ e.end_date|date:"M Y" }}{% else %}Present{% endif %}</p>
             </div>
           </div>
-          <span class="point"></span>
+          <span class="point point-right-sm {% if forloop.counter|divisibleby:2 %}point-left{% else %}point-right{% endif %}"></span>
         </div>
         {% endfor %}
         <div class="timeline-point"></div>
         <h3>Experience</h3>
         {% for ex in experience %}
-        <div class="col-sm-6 col-lg-4 content experience">
+        <div class="col-sm-6 col-lg-4 content experience {% if forloop.counter|divisibleby:2 %}right{% else %}left{% endif %}">
           <div class="card card-smal mb-3">
             <div class="card-body">
               <h4 class="highlight card-title">{{ ex.position }}</h4>
@@ -31,7 +31,7 @@
               <p class="card-text">{{ ex.start_date|date:"M Y" }} - {% if ex.end_date %}{{ ex.end_date|date:"M Y" }}{% else %}Present{% endif %}</p>
             </div>
           </div>
-          <span class="point"></span>
+          <span class="point point-right-sm {% if forloop.counter|divisibleby:2 %}point-left{% else %}point-right{% endif %}"></span>
         </div>
         {% endfor %}
         <div class="timeline-point"></div>
@@ -39,7 +39,6 @@
     </div>
   </div>
 </div>
-
 
 
 
@@ -54,7 +53,7 @@
       }, (i + 1) * 550);
     });
   });
-  
 </script>
+
 
 {% endblock %}

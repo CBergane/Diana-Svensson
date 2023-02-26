@@ -4,6 +4,25 @@
     margin-top: 70px;
 }
 
+/* Navlinks */
+.highlight-nav {
+    display: inline-block;
+
+    
+    background-repeat: no-repeat;
+
+    background-size: 10px 100%;
+    background-position: 0 0;
+    transition: background-size 0.5s, background-position 0.3s 0.5s;
+}
+
+.highlight-nav:hover {
+    background-image: linear-gradient(#eabedb, #eabedb);
+    background-size: 100% 100%;
+    background-position: 100% 0%;
+    transition: background-position 0.5s, background-size 0.5s 0.3s;
+}
+
 /* Colors */
 body{
     background-color: #737373;
@@ -13,8 +32,8 @@ body{
     background-color: #030303;
 }
 
-.nav-item:hover {
-    background-color: #eabedb;
+.nav-link {
+    color: #737373;
 }
 
 .nav-link:hover {
@@ -49,6 +68,12 @@ body{
     filter: grayscale(100%);
     -webkit-box-reflect: below 10px linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.1));
   }
+
+.card-detail{
+    box-shadow: 12px 32px 32px -12px #e299c9;
+    background-color: #d9d9d9;
+    -webkit-box-reflect: below 10px linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.1));
+}
 
 
 #section .card-custom:hover {
@@ -106,6 +131,20 @@ body{
     right: -13px;
 }
 
+.point-left {
+    position: absolute;
+    left: -7px;
+    top: 50%;
+    transform: translateY(-45%);
+}
+
+.point-right {
+    position: absolute;
+    right: -13px;
+    top: 50%;
+    transform: translateY(-55%);
+}
+
 
 .timeline-item:before {
   content: '';
@@ -130,8 +169,6 @@ body{
   border-radius: 50%;
   z-index: 1;
 }
-
-
 
 .visible {
   opacity: 1;
@@ -161,17 +198,25 @@ body{
 }
 
 .timeline-fade-in.visible {
-  opacity: 1;
+    opacity: 1;
 }
 
 .timeline-fade-in:nth-child(odd) {
-  transition-delay: 0.5s;
+    transition-delay: 0.5s;
 }
 
 .timeline-fade-in:nth-child(even) {
-  transition-delay: 1s;
+    transition-delay: 1s;
 }
 
+/* timeline cards */
+.timeline .content.visible:nth-of-type(even) {
+    transform: translateX(0);
+}
+.timeline .content.visible:nth-of-type(odd) {
+    transform: translateX(100%);
+}
+  
 
 @media only screen and (max-width: 768px) {
     .card-smal {
@@ -179,10 +224,44 @@ body{
         margin-right: 0;
     }
 
+    .timeline-tracker {
+        display: none;
+    }
+
     .timeline::after {
         left: 100%;
     }
+        /* timeline cards */
+    .timeline .content.visible:nth-of-type(even) {
+        transform: translateX(0);
+    }
+    .timeline .content.visible:nth-of-type(odd) {
+        transform: translateX(0);
+    }
+  
+    .point-left {
+        display: none;
+        left: auto;
+    }
     
+    .point-right {
+        display: none;
+    }
+    
+    .point-right-sm,
+    .point-right-sm {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        right: -13px;
+        border: 10px solid #eabedb;
+        border-radius: 50%;
+    }
+    
+    .point-right-sm {
+        display: block;
+    }
+
     .content {
         width: 100%;
         padding: 10px;
